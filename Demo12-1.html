@@ -20,25 +20,23 @@
                     num: 2
                 };
             },
-
             methods: {
-                getTotal() {
-                    return Date.now();
+                addNum() {
+                    return this.num++;
                 }
             },
-
             computed: {
                 total() {
-                    return Date.now()
+                    return this.price * this.num;
                 }
             },
-
             template: `
-            <h2>{{ total }}</h2>
-            <h2>{{ message }}</h2>
-            <h2>{{ price*num }}</h2>
+                <h3>{{ total }}</h3>
+                <button @click="addNum">点击增加</button>
             `
+
         })
+
         const vm = app.mount("#app");
     </script>
 </body>
