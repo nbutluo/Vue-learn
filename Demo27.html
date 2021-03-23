@@ -15,17 +15,28 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    inputValue: ''
+                    name: '123'
                 };
             },
-            methods: {
-                handleKeyDown() {
-                    console.log('keydown');
+            template: `<h2>技术胖</h2>
+            <Son :name="name"/>
+            <Son />
+            `
+        })
+
+        app.component("Son", {
+            props: {
+                name: {
+                    type: String,
+                    required: true,
+                    default: 'jspang.com'
                 }
             },
-            template: `<input @keydown.enter="handleKeyDown"/>`
+            template: `<div>{{ name }} DIV</div>`
         })
-        const vm = app.mount("#app")
+        const vm = app.mount("#app");
+
+
     </script>
 </body>
 

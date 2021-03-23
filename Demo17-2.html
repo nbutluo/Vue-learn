@@ -15,18 +15,30 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    inputValue: ''
+                    listObject: {
+                        GirlOne: '谢大脚',
+                        GirlTwo: '刘英',
+                        GirlThree: '晓红'
+                    }
                 };
             },
             methods: {
-                handleKeyDown() {
-                    console.log('keydown');
+                handleChangeBtnClick() {
+                    this.listArr.push("jspang.com")
                 }
             },
-            template: `<input @keydown.enter="handleKeyDown"/>`
+            template: `
+                <ul>
+                   <li v-for="(value,key,index) in listObject">
+                    {{ value }}-- {{ key }}----{{ index }}
+                    </li>
+                </ul>
+            `,
         })
+
         const vm = app.mount("#app")
     </script>
+
 </body>
 
 </html>

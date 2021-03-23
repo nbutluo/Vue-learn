@@ -13,19 +13,16 @@
     <div id="app"></div>
     <script>
         const app = Vue.createApp({
-            data() {
-                return {
-                    inputValue: ''
-                };
-            },
-            methods: {
-                handleKeyDown() {
-                    console.log('keydown');
-                }
-            },
-            template: `<input @keydown.enter="handleKeyDown"/>`
+            template: `<h2>jspang</h2>
+            <Hello msg="jspang" style="color:red;"/>
+            `
         })
-        const vm = app.mount("#app")
+
+        app.component("Hello", {
+            props: ['msg'],
+            template: `<h2 :msg="msg">hello world</h2>`
+        });
+        const vm = app.mount("#app");
     </script>
 </body>
 

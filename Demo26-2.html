@@ -15,15 +15,26 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    inputValue: ''
-                };
-            },
-            methods: {
-                handleKeyDown() {
-                    console.log('keydown');
+                    name: 123,
+                    pay: () => {
+                        alert('请支付500元');
+                    }
                 }
             },
-            template: `<input @keydown.enter="handleKeyDown"/>`
+            template: `<h2>技术胖</h2>
+            <Xiedajiao :pay="pay"/>
+            `
+        })
+
+        app.component('Xiedajiao', {
+            props: ['pay'],
+            methods: {
+                handleClick() {
+                    alert('请付钱....')
+                    this.pay()
+                }
+            },
+            template: `<div @click="this.handleClick">和小姐姐打声招呼</div>`
         })
         const vm = app.mount("#app")
     </script>

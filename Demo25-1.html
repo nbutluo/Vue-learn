@@ -12,19 +12,30 @@
 <body>
     <div id="app"></div>
     <script>
-        const app = Vue.createApp({
+        const Counter = {
             data() {
                 return {
-                    inputValue: ''
-                };
-            },
-            methods: {
-                handleKeyDown() {
-                    console.log('keydown');
+                    count: 0
                 }
             },
-            template: `<input @keydown.enter="handleKeyDown"/>`
+            template: `<div>{{ count }}<button @click="count++">增加1</button></div>`
+        }
+
+        const Xiedajiao = {
+            template: `<h2>谢大脚</h2>`
+        }
+        const app = Vue.createApp({
+            components: {
+                Counter,
+                Xiedajiao
+            },
+            template: `
+            <h2>技术胖</h2>
+            <Counter />
+            <Xiedajiao />
+            `
         })
+
         const vm = app.mount("#app")
     </script>
 </body>

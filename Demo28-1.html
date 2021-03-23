@@ -15,16 +15,24 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    inputValue: ''
+                    counter: 0
                 };
             },
-            methods: {
-                handleKeyDown() {
-                    console.log('keydown');
-                }
-            },
-            template: `<input @keydown.enter="handleKeyDown"/>`
+            template: `<h2>技术胖</h2>
+            <Counter :counter="counter"/>
+            `
         })
+
+        app.component("Counter", {
+            props: ['counter'],
+            data() {
+                return {
+                    newCounter: this.counter
+                };
+            },
+            template: `{{ this.newCounter }}<button @click="this.newCounter++">点击增加1</button>`
+        })
+
         const vm = app.mount("#app")
     </script>
 </body>

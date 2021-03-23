@@ -13,18 +13,21 @@
     <div id="app"></div>
     <script>
         const app = Vue.createApp({
-            data() {
-                return {
-                    message: 'jspang.com',
-                    show: true
-                };
+            template: `<h2>jspang</h2>
+            <Hello msg="jspang" style="color:red;"/>
+            `
+        })
+
+        app.component("Hello", {
+            mounted() {
+                console.log(this.$attrs.msg)
             },
             template: `
-            <h2 v-show="show">{{ message }}</h2>
-            <h2 v-if="show">{{ message }}</h2>
+            <h2 v-bind="$attrs">hello world</h2>
+            <h2 v-bind:style="$attrs.style">hello world</h2>
+            <h2 :style="$attrs.style">hello world</h2>
             `
         });
-
         const vm = app.mount("#app");
     </script>
 </body>

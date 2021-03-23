@@ -12,20 +12,27 @@
 <body>
     <div id="app"></div>
     <script>
+
         const app = Vue.createApp({
             data() {
                 return {
-                    inputValue: ''
-                };
-            },
-            methods: {
-                handleKeyDown() {
-                    console.log('keydown');
+                    name: 123
                 }
             },
-            template: `<input @keydown.enter="handleKeyDown"/>`
+            template: `<h2>技术胖</h2>
+                <Son name="123"/>
+                <Son :name="name"/>
+            `
+        })
+        app.component('Son', {
+            props: ['name'],
+            template: `<div>{{ typeof name }}--{{ name }} div</div>
+            `
         })
         const vm = app.mount("#app")
+
+
+
     </script>
 </body>
 
